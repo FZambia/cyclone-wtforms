@@ -1,0 +1,14 @@
+{% extends 'template.html' %}
+{% block page %}
+      <h1>{{_("It works!")}}</h1>
+      <p>
+      <small>
+        <a href="/lang/en_US">English</a>&nbsp;
+        <a href="/lang/es_ES">Español</a>&nbsp;
+        <a href="/lang/pt_BR">Português</a>
+      </small>
+      </p>
+      <p>hello = {{hello}}</p>
+      <p>awesome = {{awesome}}</p>
+      {% include 'form.html' %}
+{% end %}

@@ -1,0 +1,30 @@
+<style type="text/css">
+    .form-element {
+    	margin-bottom: 20px;
+    }
+    .form-element .error {
+    	color: red;
+    }
+</style>
+{% autoescape None %}
+<form enctype="multipart/form-data" class="well" method="post" accept-charset="utf-8">
+  	  {% module xsrf_form_html() %}
+  	  {% for field in form %}
+  	    <div class="form-element">
+  	    	<div>
+  	      	  {{ field.label() }}
+  	        </div>
+  	        <div>
+  	          {{ field(multiple='multiple') }}
+  	        </div>
+  	        {% if field.errors %}
+  	        <div>
+  	        	{% for error in field.errors %}
+  	          		<div class="error">{{ error }}</div>
+  	            {% end %}
+  	        </div>
+  	        {% end %}
+  	    </div>  
+  	  {% end %}
+      <button type="submit" class="btn">Post example</button>
+</form>
