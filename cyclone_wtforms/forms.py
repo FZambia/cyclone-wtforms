@@ -3,6 +3,7 @@ import wtforms
 from utils import MultiValueDict
 from wtforms.compat import iteritems
 
+
 class Form(wtforms.Form):
 
     def __init__(self, handler=None, **kwargs):
@@ -10,7 +11,7 @@ class Form(wtforms.Form):
         if handler:
             for name in handler.request.arguments.keys():
                 formdata.setlist(name, handler.get_arguments(name))
-            
+
             # we should also iterate over request.files because
             # get_arguments does not return list of filenames
             for field, files in iteritems(handler.request.files):

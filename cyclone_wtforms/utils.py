@@ -26,7 +26,7 @@ class MultiValueDict(dict):
     """
     A subclass of dictionary customized to handle multiple values for the
     same key.
-    
+
     >>> d = MultiValueDict({'name': ['Adrian', 'Simon'], 'position': ['Developer']})
     >>> d['name']
     'Simon'
@@ -39,7 +39,7 @@ class MultiValueDict(dict):
     >>> d.get('lastname', 'nonexistent')
     'nonexistent'
     >>> d.setlist('lastname', ['Holovaty', 'Willison'])
-    
+
     This class exists to solve the irritating problem raised by cgi.parse_qs,
     which returns a list for every key, even though most Web forms submit
     single name-value pairs.
@@ -59,7 +59,8 @@ class MultiValueDict(dict):
         try:
             list_ = super(MultiValueDict, self).__getitem__(key)
         except KeyError:
-            raise MultiValueDictKeyError("Key %r not found in %r" % (key, self))
+            raise MultiValueDictKeyError(
+                "Key %r not found in %r" % (key, self))
         try:
             return list_[-1]
         except IndexError:
@@ -188,7 +189,8 @@ class MultiValueDict(dict):
         Also accepts keyword args.
         """
         if len(args) > 1:
-            raise TypeError("update expected at most 1 arguments, got %d" % len(args))
+            raise TypeError(
+                "update expected at most 1 arguments, got %d" % len(args))
         if args:
             other_dict = args[0]
             if isinstance(other_dict, MultiValueDict):
